@@ -9,7 +9,7 @@ import Publishing from '../../../components/Publishing'
 
 const ReactQuill = dynamic(() => import('react-quill'), { ssr: false });
 
-const page = () => {
+const Page = () => {
 
 	const [title, setTitle] = useState()
 	const [summary, setSummary] = useState()
@@ -152,4 +152,4 @@ const page = () => {
 	)
 }
 
-export default page
+export default Page

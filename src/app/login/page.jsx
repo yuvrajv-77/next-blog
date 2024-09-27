@@ -6,7 +6,7 @@ import { FcGoogle } from "react-icons/fc";
 import { AiOutlineGithub } from "react-icons/ai";
 import Link from 'next/link';
 
-const page = () => {
+const Page = () => {
 
     const { user, loading, error, email, setEmail, password, setPassword, handleEmailAccountLogin, handlesignInWithGoogle, handlesignInWithGithub } = useAuth();
     const router = useRouter();
@@ -76,4 +76,4 @@ const page = () => {
     )
 }
 
-export default page
+export default Page

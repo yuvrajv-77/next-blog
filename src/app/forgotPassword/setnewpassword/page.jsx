@@ -4,7 +4,7 @@ import { useAuth } from '../../../../lib/context/AuthContext';
 import { useRouter, useSearchParams } from 'next/navigation';
 
 
-const page = () => {
+const Page = () => {
 
     const {error, resetPassword } = useAuth();
     const [newPassword, setNewPassword] = useState('');
@@ -43,4 +43,4 @@ const page = () => {
     )
 }
 
-export default page;
+export default Page;

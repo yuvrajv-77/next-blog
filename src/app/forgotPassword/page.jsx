@@ -2,7 +2,7 @@
 import React, { useState } from 'react'
 import { useAuth } from '../../../lib/context/AuthContext';
 
-const page = () => {
+const Page = () => {
 
     const {error,  email, setEmail, forgotPassword, isSending } = useAuth();
    
@@ -32,4 +32,4 @@ const page = () => {
     )
 }
 
-export default page;
+export default Page;
