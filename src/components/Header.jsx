@@ -1,14 +1,14 @@
-'use client'
-import React, { useState } from 'react'
+// 'use client'
+
 import { PiNotePencilLight } from 'react-icons/pi'
 
-import { useAuth } from '../../lib/context/AuthContext'
+// import { useAuth } from '../../lib/context/AuthContext'
 import AccountBtn from './AccountBtn'
 import Link from 'next/link'
 
 const Header = () => {
 
-    const { user, loading, error, handlesignInWithGoogle, handleLogout } = useAuth();
+    // const { user, loading, error, handlesignInWithGoogle, handleLogout } = useAuth();
 
 
     return (
@@ -24,11 +24,12 @@ const Header = () => {
                             <p>Write</p>
                         </button>
                     
-                        {user ? <AccountBtn/> :<Link href={'/login'}>
+                    <AccountBtn/>
+                        {/* {user ? <AccountBtn/> :<Link href={'/login'}>
                             <button className=' bg-black border-black hover:bg-white hover:text-black hover:shadow-2xl text-white inline-flex items-center gap-1 py-2 px-3  border focus:ring focus:ring-gray-300'>
                                 Get Started
                             </button>
-                        </Link>}
+                        </Link>} */}
                         
                         
                         

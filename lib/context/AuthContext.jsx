@@ -12,6 +12,7 @@ import {
 } from "firebase/auth";
 import { useContext, useEffect, useState, createContext } from "react";
 import { auth } from "../firebase";
+import { redirect, useRouter } from "next/navigation";
 
 // Define the context
 const AuthContext = createContext();
@@ -26,6 +27,7 @@ const AuthContextProvider = ({ children }) => {
     const [name, setName] = useState('');
     const [isSending, setIsSending] = useState(false);
 
+    const router = useRouter();
 
     const handleEmailAccountCreation = async () => {
         setLoading(true);
@@ -37,6 +39,7 @@ const AuthContextProvider = ({ children }) => {
             console.log(error);
             setError(error);
         }
+        setLoading(false);
     }
     const handleEmailAccountLogin = async () => {
         setLoading(true);
@@ -77,7 +80,8 @@ const AuthContextProvider = ({ children }) => {
         try {
             await signOut(auth)
             console.log('user logged out');
-
+            router.push('/')
+            
         } catch (error) {
             setError(error);
         }
@@ -86,7 +90,7 @@ const AuthContextProvider = ({ children }) => {
         try {
             await sendPasswordResetEmail(auth, email)
             setIsSending(true)
-        }catch(error){
+        } catch (error) {
             console.log(error);
             setError(error);
             setIsSending(false)
@@ -94,14 +98,14 @@ const AuthContextProvider = ({ children }) => {
     }
 
     const resetPassword = async (oobcode, newPassword) => {
-        try{
+        try {
             await confirmPasswordReset(auth, oobcode, newPassword);
             console.log('Password Reset Successfull!');
-            
-        }catch(error){
+
+        } catch (error) {
             console.log(error)
             setError(error);
-            
+
         }
     }
     console.log(user);
@@ -121,8 +125,8 @@ const AuthContextProvider = ({ children }) => {
         return () => unsub()
     }, [])
 
-    const isUserLoggedOut = auth.currentUser === null;
-    console.log('Is user logged out? ', isUserLoggedOut);
+
+    console.log('Is user logged out? ', auth.currentUser === null);
 
     return <AuthContext.Provider value={{
         user, loading, error, name, setName,

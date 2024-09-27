@@ -1,55 +1,33 @@
-'use client'
 
+import Image from 'next/image';
 import { blogData } from '../../../components/blogdata';
-import React, { useEffect, useState } from 'react'
-
-// interface PageProps {
-//     params: {
-//         id: string;
-//     };
-// }
-// interface Blog {
-//     id: number;
-//     title: string;
-//     subject: string;
-//     description: string;
-//     blogImg: string;
-//     authorName: string;
-//     authorImg: string;
-//     date: string;
-//     category: string;
-// }
+import React from 'react'
 
 
 const Page = ({ params }) => {
 
-    const [data, setData] = useState(null);
-
-    const fetchBlogData = () => {
         const blogId = Number(params.id);
-        const blog = blogData.find((item) => item.id === blogId);
-        if (blog) {
-            setData(blog);
-        }
-    };
-    useEffect(() => {
-        fetchBlogData();
-    }, [])
+        const data = blogData.find((item) => item.id === blogId);
+       
+    
+    // useEffect(() => {
+    //     fetchBlogData();
+    // }, [])
     return (
         <div className='px-7 lg:px-0 md:px-10 lg:max-w-[50rem] mt-7 mx-auto '>
             <div className=''>
                 <h1 className='text-2xl md:text-4xl lg:text-5xl font-bold tracking-tight md:tracking-normal'>{data?.title}</h1>
                 <p className='text-lg md:text-xl lg:text-2xl text-gray-500 tracking-tight mt-4'>{data?.subject}</p>
                 <div className='flex items-center gap-4 mt-9 w-full'>
-                    <img src={data?.authorImg} className='size-10 md:size-14 rounded-full object-cover' alt="" />
+                    <img src={data.authorImg} className='size-10 md:size-14 rounded-full object-cover' alt="" />
                     <span className='flex justify-between flex-col gap-1'>
-                        <p className='text-sm'>{data?.authorName}</p>
-                        <p className='text-sm'>{data?.date}</p>
+                        <p className='text-sm'>{data.authorName}</p>
+                        <p className='text-sm'>{data.date}</p>
                     </span>
                 </div>
             </div>
             <div className='mt-10 w-full hidden md:block'>
-                <img src={data?.blogImg} className='h-[30rem] w-full object-cover' alt="" />
+                <Image src={data?.blogImg} height={480} width={800} className='h-[30rem] w-full object-cover' alt="" />
             </div>
             <div className='mt-14 md:mt-20 '>
                 <p className='text-[15px] tracking-wide leading-7 md:leading-9 md:text-lg  md:tracking-wider font-blog font-medium md:text-justify text-gray-700 '>

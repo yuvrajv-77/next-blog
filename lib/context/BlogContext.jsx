@@ -1,9 +1,18 @@
 'use client'
-
-const { createContext } = require("react");
+const { createContext, useState, useContext } = require("react");
 
 const BlogContext = createContext();
 
-const BlogContextProvider = ({children}) => {
-    
+const BlogContextProvider = ({ children }) => {
+
+   
+    return <BlogContext.Provider value={{
+       
+    }
+    }>
+        {children}
+    </BlogContext.Provider>
 }
+
+export default BlogContextProvider;
+export const useBlogContext = () => useContext(BlogContext);
